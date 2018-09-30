@@ -1,5 +1,6 @@
 package com.delivery.startup.creesol.driversapp;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -25,6 +26,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -73,6 +75,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public boolean onMarkerClick(Marker marker) {
         if(marker.getTitle().equals("abdulkadeer")){
             Toast.makeText(getApplicationContext(),"abulkadeer",Toast.LENGTH_SHORT).show();
+            String OrderId="abc4567890";
+
+                Intent OrderDetailIntent=new Intent(MapsActivity.this,OrderDetail.class);
+                OrderDetailIntent.putExtra("OrderId",OrderId);
+                startActivity(OrderDetailIntent);
         }
         if(marker.getTitle().equals("abdullah")){
             Toast.makeText(getApplicationContext(),"abdullah",Toast.LENGTH_SHORT).show();
